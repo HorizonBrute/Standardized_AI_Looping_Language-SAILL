@@ -8,7 +8,7 @@
 
 | # | Document | Description |
 |---|---|---|
-| 01 | [Overview and Getting Started](01%20-%20Overview%20and%20Getting%20Started/overview.md) | What SAILL is, why it exists, key concepts, and a minimal hello-world setup |
+| 01 | [Overview and Getting Started](01%20-%20Overview%20and%20Getting%20Started/overview.md) | What SAILL is, why it exists, key concepts, prerequisites, getting started path, and verification steps |
 | 02 | [How it Works](02%20-%20How%20it%20Works/how_it_works.md) | Context loading mechanics, @-import rules, scope stacking, and how teams execute |
 | 03 | [SAILL Language Guide](03%20-%20SAILL%20Language%20Guide/saill_guide.md) | The full primitive set, naming rules, boxes/nesting, -context- values, failure handlers, and worked examples |
 | 04 | [Agent Groups](04%20-%20Agent%20Groups/agent_groups.md) | What agent teams are, the four shipped teams, conditions, loops, custom teams, and scope cascade |

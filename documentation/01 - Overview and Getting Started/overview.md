@@ -42,45 +42,71 @@ The acting model looks up the team, spawns each role on its assigned model group
 | Model group | A named capability tier (`#lowcost`, `#midcost`, `#highcap`, etc.) mapped to actual models |
 | SAILL primitive | A control-flow keyword: `if needed`, `if asked`, `parallel`, `wait`, `Loop`, `ask user` |
 | Scope cascade | Team and model definitions stack from a root directory down to the current folder; most-specific wins |
-| Context loading | The mechanism by which `CLAUDE.md` and `agents.md` files are assembled into a session's system prompt |
+| Context loading | The mechanism by which `agents.md` and imported files are assembled into a session's system prompt |
 
 ---
 
-## Hello World — Simplest Agent Team Setup
+## Prerequisites
 
-Three files in one directory:
+**A compatible agent harness** — any harness that:
+- Reads `agents.md` from the working directory
+- Resolves file imports declared in `agents.md` (or `CLAUDE.md`) and loads them into context
+- Passes that assembled context to the model before the session starts
 
-**CLAUDE.md**
-```
-@agent_teams_flags.md
-@agent_teams.md
-"Send an agent team" resolves through the Agent Teams framework defined in agent_teams.md. Named variants select the matching team by name.
-@model_prefs.md
-```
+Examples: Claude Code, OpenAI Codex CLI, or any similar tool that reads a context manifest and sends it to the model. The model does all interpretation — no SAILL-specific tooling is required in the harness itself.
 
-**agent_teams.md** — defines one team:
-```markdown
-### Investigate & Fix
-Diagnose a problem then apply the fix.
+**What you supply:**
+- `@-import` lines in your own `agents.md` or `CLAUDE.md` pointing at the SAILL files (`agent_teams.md`, `agent_team_flags.md`, `model_prefs.md`)
+- A `model_prefs.local.md` (gitignored) with your actual model IDs filled into each group
 
-1. Investigate (#midcost) — diagnoses root cause; hands a precise diagnosis to Fix.
-2. Fix (#lowcost) — applies the change and verifies the issue is resolved.
-```
+Once those files are in place, reload your harness context so it picks up the imports. After that, SAILL is functional.
 
-**model_prefs.md** — declares capability groups (members filled in `model_prefs.local.md`):
-```markdown
-### #lowcost
-### #midcost
-### #highcap
-```
+---
 
-With these three files in place, you can say:
+## Getting Started
 
-> "Send an investigate-and-fix team at the failing login test."
+The fastest path is the [single-folder basic implementation](../09%20-%20Tested%20Implementation%201/impl1.md) — a complete, tested setup you can run directly.
 
-The acting model spawns an Investigator on a `#midcost` model, then a Fixer on a `#lowcost` model, chaining the diagnosis through.
+1. Clone or download the SAILL repository.
+2. In your terminal, navigate to `tested_implementations/1 - single-folder_basic_implementation/`.
+3. Open your agent harness (Claude Code, Codex, or similar) with that directory as the working directory.
+4. Connect to your provider of choice.
+5. Tell the harness to invoke the agent tests directly from the file: `run /test-agent-teams from agent_teams.md`.
 
-> **Note (June 2026):** Claude Code's harness resolves `@-imports` only from `CLAUDE.md` files, not from `agents.md`. Put your `@-imports` directly in `CLAUDE.md` for reliable loading. See [How it Works](../02%20-%20How%20it%20Works/how_it_works.md) for details.
+This validates SAILL is functional in your environment before you integrate it into your own project.
+
+**To integrate into your own project:**
+1. Copy `agent_teams.md`, `agent_team_flags.md`, and `model_prefs.md` into your project directory (or point at them via environment variable paths — see [Tested Implementation 3](../11%20-%20Tested%20Implementation%203/impl3.md)).
+2. Add `@-import` lines for those files in your `agents.md` or `CLAUDE.md`.
+3. Create `model_prefs.local.md` in the same directory and fill in your model IDs for each group.
+4. Reload your harness context.
+5. Verify with the steps below.
+
+---
+
+## Verifying It Works
+
+### 1. Confirm context loads
+
+Run `/context-cost` from the directory. The output should show `CLAUDE.md` (or `agents.md`), `agent_teams.md`, `agent_team_flags.md`, and `model_prefs.md` in the loaded file list.
+
+### 2. Inspect active teams
+
+Run `/agent-teams` (bare). The skill displays all teams currently in effect, their roles, model groups, and source files.
+
+Expected output: all four shipped teams visible, sourced from `agent_teams.md`.
+
+### 3. Test spawning
+
+Run `/test-agent-teams` and select a team. The skill spawns each role as a real sub-agent and verifies each role echoed the test nonce (proof of actual execution) and ran on a model consistent with its assigned `#group`.
+
+> Note: `/test-agent-teams` spawns real agents — it incurs API cost.
+
+### 4. Invoke a team manually
+
+> "Send an investigate-and-fix team to look at the failing test."
+
+The acting model should spawn an Investigator on `#midcost`, then a Fixer on `#lowcost`, chaining the diagnosis through.
 
 ---
 
@@ -93,6 +119,7 @@ The acting model spawns an Investigator on a `#midcost` model, then a Fixer on a
 | The full SAILL primitive set, boxes, loops, -context- | [SAILL Language Guide](../03%20-%20SAILL%20Language%20Guide/saill_guide.md) |
 | Model groups, routing, per-session slots | [Model Preferences](../05%20-%20Model%20Preferences/model_preferences.md) |
 | Example loops (copy-paste team definitions) | [Example Loops](../06%20-%20Example%20Loops/example_loops.md) |
+| AIOS helper utilities reference | [Helper Utilities](../07%20-%20Helper%20Utilities/helper_utilities.md) |
 | Keeping context overhead low | [Evaluating Context Cost](../08%20-%20Evaluating%20Context%20Cost/context_cost.md) |
 | Working single-folder example | [Tested Implementation 1](../09%20-%20Tested%20Implementation%201/impl1.md) |
 | Multi-folder inheritance example | [Tested Implementation 2](../10%20-%20Tested%20Implementation%202/impl2.md) |
