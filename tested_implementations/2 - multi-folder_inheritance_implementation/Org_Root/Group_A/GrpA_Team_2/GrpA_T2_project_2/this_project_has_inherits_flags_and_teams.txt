@@ -1,0 +1,4 @@
+Inherits Org_Root --> Group_A --> GrpA_Team_2
+
+It does not have custom in-project pushes.
+... Extensible as far down the directory tree as you want to go... its using traditional harness context loading mechanisms.

@@ -1,0 +1,3 @@
+Inherits Org_Root  --> Team_2 --> Its Custom
+Group B does not extend any at their level, so they are skipped. 
+... Extensible as far down the directory tree as you want to go... its using traditional harness context loading mechanisms.

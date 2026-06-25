@@ -1,0 +1,5 @@
+Inherits Org_Root --> Group_B --> GrpB_Team_1
++ --> Its Custom
+
+Group B does not push an agent_teams.local.md or agent_team_flags.local.md
+... Extensible as far down the directory tree as you want to go... its using traditional harness context loading mechanisms.

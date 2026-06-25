@@ -1,0 +1,4 @@
+this project inherits all flags and teams above it but not in sibling relationship:
+Org_Root --> Group_B --> GrpB_Team_2
+
+It does not have custom in-project pushes.
