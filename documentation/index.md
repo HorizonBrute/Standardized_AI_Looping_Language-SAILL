@@ -19,5 +19,5 @@
 | 08 | [Model Preferences](08%20-%20Model%20Preferences/model_preferences.md) | Model groups, member grammar, per-session slots, task-class routing, scope cascade, and skill callouts |
 | 09 | [Tested Implementation 2](09%20-%20Tested%20Implementation%202/impl2.md) | Multi-folder context inheritance: hierarchy, what stacks at each level, and override mechanics |
 | 10 | [Tested Implementation 3](10%20-%20Tested%20Implementation%203/impl3.md) | Environment variable paths: pointing @-imports at a variable location for flexible or shared deployments |
-| 11 | [Helper Utilities](11%20-%20Helper%20Utilities/helper_utilities.md) | Reference for all AIOS system utilities across bin, sbin, and usrbin — names, descriptions, and file links |
+| 11 | [Helper Utilities](11%20-%20Helper%20Utilities/helper_utilities.md) | Reference for system utilities across bin, sbin, and usrbin — names, descriptions, and file links |
 | 12 | [SAILL Inside Skills](12%20-%20SAILL%20Inside%20Skills/saill_in_skills.md) | Embedding SAILL team notation directly in a skill body — the before/after pattern, authoring rules, token economy, and the reference implementation |

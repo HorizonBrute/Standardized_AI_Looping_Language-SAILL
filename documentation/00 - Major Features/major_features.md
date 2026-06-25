@@ -118,6 +118,6 @@ Every construct composes with every other. Complexity comes from composition, no
 
 **Teams, model preferences, and flags inherit and override by directory depth.**
 
-SAILL configuration stacks: OS-level → project-level → brain-level → subfolder. Each layer can add or override what's above it. A brain gets the full AIOS default vocabulary plus its own local customizations, with no duplication.
+SAILL configuration stacks: OS-level → project-level → brain-level → subfolder. Each layer can add or override what's above it. A brain gets the full default vocabulary from every enclosing scope plus its own local customizations, with no duplication.
 
 > See [Tested Implementation 2](../09%20-%20Tested%20Implementation%202/impl2.md) and [How it Works](../06%20-%20How%20it%20Works/how_it_works.md).

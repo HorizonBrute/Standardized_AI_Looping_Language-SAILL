@@ -123,4 +123,4 @@ The acting model should spawn an Investigator on `#midcost`, then a Fixer on `#l
 | Model groups, routing, per-session slots | [Model Preferences](../08%20-%20Model%20Preferences/model_preferences.md) |
 | Multi-folder inheritance example | [Tested Implementation 2](../09%20-%20Tested%20Implementation%202/impl2.md) |
 | Environment variable paths example | [Tested Implementation 3](../10%20-%20Tested%20Implementation%203/impl3.md) |
-| AIOS helper utilities reference | [Helper Utilities](../11%20-%20Helper%20Utilities/helper_utilities.md) |
+| Helper utilities reference | [Helper Utilities](../11%20-%20Helper%20Utilities/helper_utilities.md) |
