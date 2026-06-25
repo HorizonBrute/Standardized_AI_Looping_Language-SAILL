@@ -1,8 +1,3 @@
-﻿@agents.md    # NOTE:  This *SHOULD* work. I found it to be unreliable and that Claude.md would sometimes not faithfully import  @-imports from agents.md. Testing of this was during June 2026 during initial development. 
-
-#@agent_teams.md       # Load Agent Teams definitions
-@agent_team_flags.md  # Load Looping Definitions
-                       # Save context, you can instruct the agent to reference the file if it needs.
-                       # Testing with Claude Sonnet 4.6 Produced unreliable results.
+﻿@agents.md
 **"Send an agent team"** resolves through the Agent Teams framework defined in
   `agent_teams.md`. Named variants select the matching team by name.

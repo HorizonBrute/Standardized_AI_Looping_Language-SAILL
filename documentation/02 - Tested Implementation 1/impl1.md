@@ -10,7 +10,7 @@ This implementation demonstrates the minimal SAILL setup: all files in one direc
 
 - The minimum set of files needed to use agent teams and model preferences
 - How `CLAUDE.md` wires the files together via `@-imports`
-- The known limitation with `@-imports` in `agents.md` vs. `CLAUDE.md`
+- How `agents.md` loads the SAILL files, and `CLAUDE.md` loads `agents.md`
 
 ---
 
@@ -31,21 +31,15 @@ This implementation demonstrates the minimal SAILL setup: all files in one direc
 
 ### CLAUDE.md
 
-The harness entry point. `@-imports` the files that must be in context every session.
+The harness entry point. Loads `agents.md`, which in turn loads the SAILL files via recursive `@-import` resolution.
 
 ```
-@agents.md    # NOTE: This *SHOULD* work. Found to be unreliable — Claude.md
-              # sometimes did not faithfully import @-imports from agents.md.
-              # Testing during June 2026 initial development.
-
-#@agent_teams.md       # Load Agent Teams definitions (commented out — redundant)
-@agent_team_flags.md  # Load flag definitions
-                       # Save context — instruct agent to reference the file if needed.
+@agents.md
 **"Send an agent team"** resolves through the Agent Teams framework defined in
   agent_teams.md. Named variants select the matching team by name.
 ```
 
-> **Key finding from testing:** `@-imports` declared inside `agents.md` were not reliably resolved by the harness. The files that must be in context (`agent_teams.md`, `agent_team_flags.md`, `model_prefs.md`) should be `@-imported` directly in `CLAUDE.md`, not only in `agents.md`.
+When `CLAUDE.md` `@-imports` `agents.md`, the harness resolves `agents.md`'s own `@-imports` recursively — so `agent_teams.md`, `agent_team_flags.md`, and `model_prefs.md` all load automatically. See [How it Works](../06%20-%20How%20it%20Works/how_it_works.md) for the resolution chain.
 
 ### agents.md
 
@@ -105,8 +99,3 @@ In a session with this directory as CWD:
 
 The acting model should spawn an Investigator on `#midcost`, then a Fixer on `#lowcost`.
 
----
-
-## Known Limitation
-
-`@-imports` in `agents.md` are not reliably resolved by the harness (observed June 2026, Claude Sonnet 4.6/4.8). The workaround is to `@-import` all needed files directly in `CLAUDE.md`. The `agents.md` `@-import` lines serve as documentation and may work in future harness versions.

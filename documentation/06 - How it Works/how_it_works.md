@@ -33,8 +33,6 @@ The `@file` syntax inside a `CLAUDE.md` is a harness directive. The harness reso
 
 3. **Recursive resolution.** If `CLAUDE.md` imports `agents.md`, and `agents.md` contains `@-references`, those are resolved further — because the resolution context started from a `CLAUDE.md`.
 
-> **Note (June 2026):** In practice, Claude Code does not reliably honor `@-imports` inside `agents.md`. Files that `agents.md` intends to import should be `@-imported` directly in `CLAUDE.md` to guarantee loading. This is a known limitation observed during initial testing.
-
 ### The right pattern for optional content
 
 If you want a file available only when the model explicitly needs it, do not `@-import` it. Write a prose pointer instead:
