@@ -1,3 +1,3 @@
 # SAILL Version
 
-**Current Version:** 0.9 (pre-release)
+**Current Version:** 1.0.0

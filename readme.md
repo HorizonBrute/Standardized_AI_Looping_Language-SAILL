@@ -138,6 +138,7 @@ Full walkthrough: [Overview and Getting Started](documentation/01%20-%20Overview
 | 10 | [Tested Implementation 3](documentation/10%20-%20Tested%20Implementation%203/impl3.md) | Environment variable paths for flexible or shared deployments |
 | 11 | [Helper Utilities](documentation/11%20-%20Helper%20Utilities/helper_utilities.md) | Reference for bin utilities — context_cost.py, resolve_agent_teams.py, and testing tools |
 | 12 | [SAILL Inside Skills](documentation/12%20-%20SAILL%20Inside%20Skills/saill_in_skills.md) | Embedding SAILL team notation directly in a skill body — authoring rules and token economy |
+| 13 | [Proposing a New Primitive](documentation/13%20-%20Proposing%20a%20New%20Primitive/proposing_primitive.md) | How to prototype, test, document, and submit a new SAILL primitive proposal |
 
 Full index: [documentation/index.md](documentation/index.md)
 

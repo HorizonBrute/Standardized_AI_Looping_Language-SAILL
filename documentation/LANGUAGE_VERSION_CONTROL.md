@@ -36,15 +36,20 @@ First public pre-release of SAILL. Establishes the core primitive set and syntax
 
 ---
 
-## 1.0
+## 1.0.0
 
-_Placeholder — to be filled before 1.0 merge to main._
+**Date:** 2026-06-25
+**Status:** Stable
 
-<!--
-Sections to complete:
-- Breaking changes (if any from 0.9)
-- New primitives
-- Modified primitives
-- Removed primitives
-- Migration notes
--->
+First stable release of SAILL. No breaking changes from 0.9.
+
+### Changes from 0.9
+
+- No primitives added, removed, or modified.
+- Primitive set, syntax, and model group conventions are unchanged.
+- Documentation completed and indexed across all 13 sections.
+- Hash integrity baseline established.
+
+### Migration notes
+
+No migration required from 0.9. All 0.9 team definitions are valid 1.0.0 definitions.
