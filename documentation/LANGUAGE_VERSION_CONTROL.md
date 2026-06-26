@@ -4,6 +4,20 @@
 
 This document tracks language-level changes to SAILL (Standard AI Looping Language): primitives added, removed, or modified; syntax changes; and breaking changes. It does not track implementation changes (tooling, harness, skill scaffolding, etc.).
 
+## Versioning Policy
+
+SAILL uses semantic versioning (`MAJOR.MINOR.PATCH`):
+
+| Release type | When | Example trigger |
+|---|---|---|
+| **Major** (`x.0.0`) | Breaking changes to existing primitives or syntax | Renaming a primitive, changing its semantics |
+| **Minor** (`1.x.0`) | New primitive added to the language | `ask-all`, `race`, or any new control-flow keyword |
+| **Patch** (`1.0.x`) | Documentation updates, new examples, tooling or skill changes, code updates that do not alter language behavior | New example loop, README fix, hash regeneration |
+
+Most releases will be patch-level. A code or tooling change may be elevated to a minor release if it meaningfully changes how primitives behave or affects harness compatibility, but this is the exception rather than the rule.
+
+---
+
 ---
 
 ## 0.9 (pre-release)
